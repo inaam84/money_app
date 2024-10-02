@@ -1,0 +1,9 @@
+PUT http://budget-app-backend.test/api/incomes/2 HTTP/1.1
+content-type: application/json
+Accept: application/json
+Authorization: Bearer 10|ms6fqDNC74VzxDRx8Wlk82DhVkimZqpdwyqmOewVf7ec0be2
+
+{
+    "name": "Updated Name",
+    "amount": 59.99
+}
