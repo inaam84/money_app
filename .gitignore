@@ -1,5 +1,6 @@
 /.phpunit.cache
 /node_modules
+/rest_calls
 /public/build
 /public/hot
 /public/storage
