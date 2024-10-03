@@ -20,6 +20,7 @@ class IncomeController extends BaseController
         $income = Income::create([
             'name' => $request->name,
             'amount' => $request->amount,
+            'currency' => $request->currency,
             'user_id' => auth()->user()->id,
         ]);
 
@@ -35,6 +36,7 @@ class IncomeController extends BaseController
         $income->update([
             'name' => $request->name,
             'amount' => $request->amount,
+            'currency' => $request->currency,
         ]);
 
         return response()->json([

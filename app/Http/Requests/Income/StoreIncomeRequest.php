@@ -28,6 +28,7 @@ class StoreIncomeRequest extends FormRequest
                 'required',
                 'regex:/^\d+(\.\d{1,2})?$/',
             ],
+            'currency' => 'required|in:USD,GBP,PKR,AED,CAD,EUR',
             'user_id' => 'nullable|numeric|in:' . User::pluck('id')->implode(','),
         ];
     }
