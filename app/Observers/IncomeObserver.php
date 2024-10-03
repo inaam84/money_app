@@ -8,27 +8,37 @@ class IncomeObserver
 {
     public function creating(Income $income)
     {
-        return $income->amount = $this->formatAmountForDB($income->amount);
+        $income->amount = $this->formatAmountForDB($income->amount);
+        $income->currency = strtoupper($income->currency);
+        return $income;
     }
 
     public function created(Income $income)
     {
-        return $income->amount = $this->formatAmountForUser($income->amount);
+        $income->amount = $this->formatAmountForUser($income->amount);
+        $income->currency = strtoupper($income->currency);
+        return $income;
     }
 
     public function updating(Income $income)
     {
-        return $income->amount = $this->formatAmountForDB($income->amount);
+        $income->amount = $this->formatAmountForDB($income->amount);
+        $income->currency = strtoupper($income->currency);
+        return $income;
     }
 
     public function updated(Income $income)
     {
-        return $income->amount = $this->formatAmountForUser($income->amount);
+        $income->amount = $this->formatAmountForUser($income->amount);
+        $income->currency = strtoupper($income->currency);
+        return $income;
     }
 
     public function retrieved(Income $income)
     {
-        return $income->amount = $this->formatAmountForUser($income->amount);
+        $income->amount = $this->formatAmountForUser($income->amount);
+        $income->currency = strtoupper($income->currency);
+        return $income;
     }
 
     private function formatAmountForUser($amount)
