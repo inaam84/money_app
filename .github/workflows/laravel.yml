@@ -35,3 +35,5 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: php artisan test
+    - run: echo "🍏 This job's status is ${{ job.status }}."
+
