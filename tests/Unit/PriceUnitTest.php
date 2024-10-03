@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests;
+namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use PHPUnit\Framework\TestCase;
 
-abstract class TestCase extends BaseTestCase
+class PriceUnitTest extends TestCase
 {
     /**
      * A basic unit test example.
