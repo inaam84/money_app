@@ -1,9 +1,9 @@
 POST http://budget-app-backend.test/api/incomes HTTP/1.1
 content-type: application/json
 Accept: application/json
-Authorization: Bearer 10|ms6fqDNC74VzxDRx8Wlk82DhVkimZqpdwyqmOewVf7ec0be2
+Authorization: Bearer 3|MIsOIQFH6D00G4K9uOpRjf1vlfbyBbLTynVcmFzr5ff4424e
 
 {
-    "name": "New Price",
-    "amount": 40000
+    "name": "New Price 3",
+    "amount": 80000
 }

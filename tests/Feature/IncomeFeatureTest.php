@@ -6,15 +6,20 @@ use App\Models\Income;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class IncomeFeatureTest extends TestCase
 {
-    use WithFaker;
-
+    use WithFaker;//, RefreshDatabase;
 
     public function test_it_can_create_income(): void
     {
+        Sanctum::actingAs(
+            User::factory()->create(),
+            ['*']
+        );
+
         $response = $this->postJson(route('incomes.store'), [
             'name' => substr($this->faker->firstName() . ' ' . $this->faker->lastName(), 0, 15),
             'amount' => $this->faker->randomFloat( rand(1, 2), 50, 1000 ),
@@ -27,6 +32,11 @@ class IncomeFeatureTest extends TestCase
 
     public function test_invalid_amount(): void
     {
+        Sanctum::actingAs(
+            User::factory()->create(),
+            ['*']
+        );
+
         $response = $this->postJson(route('incomes.store'), [
             'name' => substr($this->faker->firstName() . ' ' . $this->faker->lastName(), 0, 15),
             'amount' => $this->faker->word(),
@@ -38,6 +48,11 @@ class IncomeFeatureTest extends TestCase
     
     public function test_invalid_user_id(): void
     {
+        Sanctum::actingAs(
+            User::factory()->create(),
+            ['*']
+        );
+
         $response = $this->postJson(route('incomes.store'), [
             'name' => substr($this->faker->firstName() . ' ' . $this->faker->lastName(), 0, 15),
             'amount' => $this->faker->randomFloat( rand(1, 2), 50, 1000 ),
@@ -49,6 +64,17 @@ class IncomeFeatureTest extends TestCase
 
     public function test_it_can_update_income(): void
     {
+        Sanctum::actingAs(
+            User::factory()->create(),
+            ['*']
+        );
+
+        $response = $this->postJson(route('incomes.store'), [
+            'name' => substr($this->faker->firstName() . ' ' . $this->faker->lastName(), 0, 15),
+            'amount' => $this->faker->randomFloat( rand(1, 2), 50, 1000 ),
+            'user_id' => User::pluck('id')->random(),
+        ]);
+
         $income = Income::inRandomOrder()->first();
         $response = $this->putJson(route('incomes.update', $income), [
             'name' => substr($this->faker->firstName() . ' ' . $this->faker->lastName(), 0, 15),
@@ -61,6 +87,11 @@ class IncomeFeatureTest extends TestCase
     
     public function test_it_can_delete_income()
     {
+        Sanctum::actingAs(
+            User::factory()->create(),
+            ['*']
+        );
+
         $createResponse = $this->postJson(route('incomes.store'), [
             'name' => substr($this->faker->firstName() . ' ' . $this->faker->lastName(), 0, 15),
             'amount' => $this->faker->randomFloat( rand(1, 2), 50, 1000 ),
