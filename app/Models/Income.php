@@ -15,7 +15,7 @@ class Income extends Model
     protected $fillable = [
         'name',
         'amount',
-        'currency', // currency field has been added.
+        'currency', // currency field has been added...
         'user_id',
     ];
 }
