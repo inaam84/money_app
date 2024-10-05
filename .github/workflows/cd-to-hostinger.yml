@@ -1,0 +1,34 @@
+name: Deploy Laravel App
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up SSH to connect to the server
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # Step 3: Deploy the code to the server
+      - name: Deploy to VPS
+        run: |
+          ssh -o StrictHostKeyChecking=no username@your-vps-ip << 'EOF'
+          cd /var/www/html/Inaam
+          git pull origin main  # Pull the latest code
+          composer install --no-dev --prefer-dist --optimize-autoloader  # Install dependencies
+          php artisan migrate --force  # Run migrations
+          php artisan config:cache  # Cache the configuration
+          php artisan route:cache  # Cache the routes
+          php artisan view:cache  # Cache the views
+          EOF
