@@ -23,7 +23,7 @@ jobs:
       # Step 3: Deploy the code to the server
       - name: Deploy to VPS
         run: |
-          ssh -o StrictHostKeyChecking=no username@your-vps-ip << 'EOF'
+          ssh -o StrictHostKeyChecking=no githubuser@213.210.20.184 << 'EOF'
           cd /var/www/html/Inaam
           git pull origin main  # Pull the latest code
           composer install --no-dev --prefer-dist --optimize-autoloader  # Install dependencies
