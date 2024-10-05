@@ -4,14 +4,13 @@ namespace Tests\Feature;
 
 use App\Models\Expense;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class ExpenseFeatureTest extends TestCase
 {
-    use WithFaker;//, RefreshDatabase;
+    use WithFaker;
 
     private function randomCurrency()
     {
