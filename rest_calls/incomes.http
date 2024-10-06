@@ -1,4 +1,4 @@
 GET http://budget-app-backend.test/api/incomes HTTP/1.1
 content-type: application/json
 Accept: application/json
-Authorization: Bearer 2|N2luTg4tJqQSM85yVL4vf4sBs1yYCdvTthQJ9RFV5a9f8a03
+Authorization: Bearer 2|HNCHblWnLDhKhLuadjdpDHDyfVtJpBl3yyo1Gwk827da24d3
