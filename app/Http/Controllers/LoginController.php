@@ -44,4 +44,12 @@ class LoginController extends BaseController
 
         return $this->sendError('Invalid Credentials', ['error' => 'Unauthenticated']);
     }
+
+    public function logout(Request $request)
+    {
+        auth()->user()->tokens()->delete();
+        auth()->user()->currentAccessToken()->delete();
+
+        return response()->json('User logged out successfully.');
+    }
 }

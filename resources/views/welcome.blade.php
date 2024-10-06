@@ -55,6 +55,9 @@
                     </header>
 
                     <main class="mt-6">
+                        @if (auth()->user())
+                        <h1>You are logged in as {{ auth()->user()->email }}</h1>
+                        @endif
                         <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
                             <a
                                 href="https://laravel.com/docs"

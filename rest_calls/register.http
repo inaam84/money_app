@@ -4,7 +4,7 @@ Accept: application/json
 
 {
     "name": "Inaam Azmat",
-    "email": "inaam.cs@gmail.com",
+    "email": "inaam.azmat@perspective-uk.com",
     "password": "password",
     "c_password": "password"
 }
